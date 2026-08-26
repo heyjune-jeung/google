@@ -53,9 +53,11 @@
     <div class="category__grid">
 
       <article class="project">
-        <h4>B2B Invoice Automation</h4>
+        <div class="project__head">
+          <h4>B2B Invoice Automation</h4>
+          <button class="project__watch" style="color:#4285F4" type="button" data-video="B2B_Invoice_demo.mp4">Watch demo ↗</button>
+        </div>
         <p class="project__desc">Shopify, Extensiv WMS, and QuickBooks Online stitched into one invoicing app. Errors down, book close faster, no dedicated labor.</p>
-        <video src="B2B_Invoice_demo.mp4" muted loop playsinline controls preload="metadata"></video>
         <div class="project__foot">
           <div class="project__result">
             <span class="project__figure" style="color:#4285F4">$13K/yr</span>
@@ -66,9 +68,11 @@
       </article>
 
       <article class="project">
-        <h4>QuickDraft</h4>
+        <div class="project__head">
+          <h4>QuickDraft</h4>
+          <button class="project__watch" style="color:#4285F4" type="button" data-video="QuickDraft_demo.mp4">Watch demo ↗</button>
+        </div>
         <p class="project__desc">Bulk retailer order generation from a single file upload: 150+ orders drafted at once instead of typed one by one.</p>
-        <video src="QuickDraft_demo.mp4" muted loop playsinline controls preload="metadata"></video>
         <div class="project__foot">
           <div class="project__result">
             <span class="project__figure" style="color:#4285F4">3 hrs/day</span>
@@ -102,7 +106,10 @@
       </article>
 
       <article class="project">
-        <h4>QVC Dropship Pipeline</h4>
+        <div class="project__head">
+          <h4>QVC Dropship Pipeline</h4>
+          <button class="project__watch" style="color:#0F9D58" type="button" data-video="QVC_Dropship.mp4">Watch demo ↗</button>
+        </div>
         <p class="project__desc">Hourly pipeline that monitors Rithum, creates the order in Extensiv, attaches the shipping label, and notifies the warehouse in Slack before the chargeback window closes.</p>
         <div class="project__foot">
           <div class="project__result">
@@ -248,5 +255,14 @@
 
 </main>
 
+<div class="video-modal" id="video-modal" hidden>
+  <div class="video-modal__backdrop" data-video-close></div>
+  <div class="video-modal__box">
+    <button class="video-modal__close" type="button" data-video-close aria-label="Close video">✕</button>
+    <video class="video-modal__video" id="video-modal-video" controls playsinline></video>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
