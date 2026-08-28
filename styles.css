@@ -347,7 +347,7 @@ button { font: inherit; }
 .variant-about.is-visible { display: block; }
 .about__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2.6fr 1fr;
   grid-template-rows: minmax(0, 1fr);
   gap: 3cqw;
   height: 100%;
@@ -370,7 +370,7 @@ button { font: inherit; }
   line-height: 1.15;
   font-style: italic;
 }
-.about__stack { margin-top: 0.3cqw; }
+.about__stack { margin-top: 2cqw; }
 .about__stack-label {
   margin: 0 0 0.3cqw;
   font-family: var(--sans);
