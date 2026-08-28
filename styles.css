@@ -45,6 +45,7 @@ button { font: inherit; }
 
 .stage {
   position: relative;
+  height: 100vh;
   height: 100dvh;
   display: flex;
   align-items: center;
@@ -55,6 +56,7 @@ button { font: inherit; }
 
 .spread-wrap {
   position: relative;
+  width: min(97vw, calc((100vh - 3vh) * 1.5));
   width: min(97vw, calc((100dvh - 3vh) * 1.5));
   aspect-ratio: 1.5 / 1;
   perspective: 2800px;
@@ -563,8 +565,15 @@ button { font: inherit; }
 
   .spread-wrap {
     width: 100vw;
+    height: 100vh;
     height: 100dvh;
     aspect-ratio: auto;
+    /* .spread-wrap has `transform` + `perspective`, which makes it the
+       containing block for any `position: fixed` descendant in some
+       WebKit-based in-app browsers (they're not consistent about this).
+       Everything below is positioned `absolute` against #spread instead,
+       which sidesteps that ambiguity entirely — #spread has no transform
+       of its own, and on mobile its box exactly matches the viewport. */
   }
   .spread { height: 100%; }
 
@@ -576,7 +585,7 @@ button { font: inherit; }
   /* the left page becomes an off-canvas drawer, independent of the book
      open/close animation — its own .toc-open class controls it */
   .page-left {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -594,7 +603,7 @@ button { font: inherit; }
 
   .toc-backdrop {
     display: block;
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 25;
     background: rgba(13, 13, 12, 0.5);
