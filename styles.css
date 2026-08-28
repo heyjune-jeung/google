@@ -228,7 +228,7 @@ button { font: inherit; }
 .big-word {
   margin: 0;
   text-align: right;
-  font-size: max(44px, 7.6cqw);
+  font-size: max(32px, 6cqw);
   line-height: 0.9;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -257,8 +257,8 @@ button { font: inherit; }
 .chapter-item {
   display: flex;
   align-items: flex-start;
-  gap: 2.2cqw;
-  padding: 1.8cqw 0;
+  gap: 1.6cqw;
+  padding: 1.1cqw 0;
   border-top: 1px solid var(--rule);
 }
 .item-no {
@@ -273,24 +273,24 @@ button { font: inherit; }
   margin: 0;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: max(16px, 2.11cqw);
-  line-height: 1.35;
+  font-size: max(14px, 1.6cqw);
+  line-height: 1.3;
   letter-spacing: 0.01em;
 }
 .item-desc {
-  margin: 0.5cqw 0 0;
+  margin: 0.35cqw 0 0;
   font-family: var(--sans);
-  font-size: max(15px, 1.83cqw);
-  line-height: 1.5;
+  font-size: max(12px, 1.35cqw);
+  line-height: 1.4;
   color: var(--muted-3);
   text-wrap: pretty;
 }
 .item-figure {
-  margin: 0.7cqw 0 0;
+  margin: 0.4cqw 0 0;
   font-family: var(--sans);
-  font-size: max(14px, 1.87cqw);
-  line-height: 1.75;
-  letter-spacing: 0.1em;
+  font-size: max(11px, 1.3cqw);
+  line-height: 1.5;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted-2);
 }
@@ -301,12 +301,12 @@ button { font: inherit; }
 }
 .item-action { flex: 0 0 auto; }
 .watch-btn {
-  padding: 0.7cqw 1.2cqw;
+  padding: 0.5cqw 1cqw;
   border: 1px solid var(--ink);
   background: transparent;
   cursor: pointer;
   font-family: var(--sans);
-  font-size: max(13px, 1.75cqw);
+  font-size: max(11px, 1.3cqw);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink);
