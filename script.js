@@ -39,7 +39,7 @@
     { title: 'Get in Touch', word: 'contact', kicker: 'Contact', meta: 'Back cover', type: 'contact' }
   ];
 
-  var state = { i: 0, cover: true, turning: false, clip: null };
+  var state = { i: 0, cover: true, turning: false, clip: null, tocOpen: false };
 
   var el = {
     stage: document.getElementById('stage'),
@@ -48,6 +48,8 @@
     pageLeft: document.getElementById('page-left'),
     spine: document.getElementById('spine'),
     cover: document.getElementById('cover'),
+    tocToggle: document.getElementById('toc-toggle'),
+    tocBackdrop: document.getElementById('toc-backdrop'),
     kicker: document.getElementById('page-kicker'),
     folio: document.getElementById('page-folio'),
     word: document.getElementById('page-word'),
@@ -100,6 +102,11 @@
     el.spread.classList.toggle('is-open', !closed);
     el.pageLeft.classList.toggle('is-open', !closed);
     el.spine.classList.toggle('is-open', !closed);
+
+    // Mobile: the left page is a slide-in drawer, toggled independently
+    // of the book-open animation above.
+    el.pageLeft.classList.toggle('toc-open', state.tocOpen);
+    el.tocBackdrop.classList.toggle('is-visible', state.tocOpen);
 
     if (state.cover) {
       el.cover.hidden = false;
@@ -159,6 +166,17 @@
 
   function goTo(idx) {
     state.i = idx;
+    state.tocOpen = false;
+    render();
+  }
+
+  function toggleToc() {
+    state.tocOpen = !state.tocOpen;
+    render();
+  }
+
+  function closeToc() {
+    state.tocOpen = false;
     render();
   }
 
@@ -190,9 +208,16 @@
 
   el.clip.addEventListener('click', closeClip);
 
+  el.tocToggle.addEventListener('click', toggleToc);
+  el.tocBackdrop.addEventListener('click', closeToc);
+
   window.addEventListener('keydown', function (e) {
     if (state.clip) {
       if (e.key === 'Escape') closeClip();
+      return;
+    }
+    if (state.tocOpen && e.key === 'Escape') {
+      closeToc();
       return;
     }
     if (state.cover) {

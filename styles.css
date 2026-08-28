@@ -548,3 +548,97 @@ button { font: inherit; }
   text-transform: uppercase;
   color: var(--muted);
 }
+
+/* ==========================================================================
+   Mobile — the two-page spread can't work on a phone width, so below the
+   breakpoint this becomes a single scrollable page. The table of contents
+   becomes a slide-in drawer (☰ button) instead of a permanent left page.
+   ========================================================================== */
+
+.toc-toggle { display: none; }
+.toc-backdrop { display: none; }
+
+@media (max-width: 820px) {
+  .stage { padding: 0; }
+
+  .spread-wrap {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+  .spread { height: 100%; }
+
+  .page-right { width: 100%; }
+  .page-content { overflow-y: auto; }
+
+  .spine { display: none; }
+
+  /* the left page becomes an off-canvas drawer, independent of the book
+     open/close animation — its own .toc-open class controls it */
+  .page-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 86vw;
+    max-width: 400px;
+    z-index: 30;
+    opacity: 1;
+    pointer-events: auto;
+    overflow-y: auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .page-left.toc-open { transform: translateX(0); }
+
+  .toc-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    background: rgba(13, 13, 12, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .toc-backdrop.is-visible { opacity: 1; pointer-events: auto; }
+
+  .toc-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 10;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  /* cover spans the full stage on mobile instead of just the right half */
+  .cover { left: 0; }
+
+  /* chapter items: let the demo button drop under the text instead of
+     squeezing everything into one row */
+  .chapter-item { flex-wrap: wrap; }
+  .item-action { flex-basis: 100%; padding-left: calc(1.87cqw + 2.2cqw); }
+
+  /* about page: stack instead of two columns; portrait gets a fixed cap
+     instead of stretching to fill a now-tall, scrollable column */
+  .about__grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 24px;
+  }
+  .about__text { overflow-y: visible; }
+  .about__portrait { flex-direction: column-reverse; }
+  .about__portrait img { flex: none; width: 100%; height: 260px; }
+}

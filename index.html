@@ -18,6 +18,9 @@
  <div class="spread-wrap" id="spread-wrap">
   <div class="spread" id="spread">
 
+    <!-- Mobile only: tap-outside backdrop for the contents drawer -->
+    <div class="toc-backdrop" id="toc-backdrop"></div>
+
     <!-- Left page: fixed table of contents -->
     <div class="page page-left" id="page-left">
       <p class="vert-label vert-label--left">The Graceful Grace</p>
@@ -49,6 +52,7 @@
 
     <!-- Right page: current chapter/section -->
     <div class="page page-right" id="page-right">
+      <button type="button" class="toc-toggle" id="toc-toggle" aria-label="Contents">☰</button>
       <p class="vert-label vert-label--right" id="page-kicker"></p>
       <p class="folio folio--right" id="page-folio"></p>
 
