@@ -582,6 +582,11 @@ button { font: inherit; }
        which sidesteps that ambiguity entirely — #spread has no transform
        of its own, and on mobile its box exactly matches the viewport. */
   }
+  /* the desktop "closed book" state shifts the whole spread -25% to reveal
+     just the cover's half; there's no two-page spread on mobile, so that
+     shift only pushes everything (including the cover) off-screen. */
+  .spread-wrap,
+  .spread-wrap.is-open { transform: none; }
   .spread { height: 100%; }
 
   .page-right { width: 100%; }
@@ -640,6 +645,7 @@ button { font: inherit; }
 
   /* cover spans the full stage on mobile instead of just the right half */
   .cover { left: 0; }
+  .cover__image { object-fit: contain; }
 
   /* chapter items: let the demo button drop under the text instead of
      squeezing everything into one row */
