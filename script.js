@@ -147,8 +147,25 @@
     }
   }
 
+  var autoOpenTimer = null;
+
+  function cancelAutoOpen() {
+    if (autoOpenTimer) {
+      clearTimeout(autoOpenTimer);
+      autoOpenTimer = null;
+    }
+  }
+
+  function scheduleAutoOpen() {
+    autoOpenTimer = setTimeout(function () {
+      autoOpenTimer = null;
+      open();
+    }, 2000);
+  }
+
   function open() {
     if (state.turning || !state.cover) return;
+    cancelAutoOpen();
     state.turning = true;
     render();
     setTimeout(function () {
@@ -228,5 +245,14 @@
     if (e.key === 'ArrowLeft') go(-1);
   });
 
+  // Scroll or touch while the cover is showing skips straight to opening it.
+  window.addEventListener('wheel', function () {
+    if (state.cover && !state.turning) open();
+  }, { passive: true });
+  window.addEventListener('touchstart', function () {
+    if (state.cover && !state.turning) open();
+  }, { passive: true });
+
   render();
+  scheduleAutoOpen();
 })();
