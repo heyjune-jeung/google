@@ -347,7 +347,7 @@ button { font: inherit; }
 .variant-about.is-visible { display: block; }
 .about__grid {
   display: grid;
-  grid-template-columns: 2.1fr 1.3fr;
+  grid-template-columns: 2.6fr 1.1fr;
   grid-template-rows: minmax(0, 1fr) auto;
   gap: 2.5cqw 3cqw;
   height: 100%;
