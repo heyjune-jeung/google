@@ -370,7 +370,7 @@ button { font: inherit; }
   line-height: 1.15;
   font-style: italic;
 }
-.about__stack { margin-top: 3.4cqw; }
+.about__stack { margin-top: 5.5cqw; }
 .about__stack .about__stack-label {
   margin: 0 0 0.3cqw;
   font-family: var(--sans);
