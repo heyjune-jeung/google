@@ -349,7 +349,7 @@ button { font: inherit; }
   display: grid;
   grid-template-columns: 2.1fr 1.3fr;
   grid-template-rows: minmax(0, 1fr) auto;
-  gap: 0.8cqw 3cqw;
+  gap: 2.5cqw 3cqw;
   height: 100%;
 }
 .about__text {
@@ -389,14 +389,14 @@ button { font: inherit; }
 .about__stack-group { color: var(--ink); }
 
 .about__portrait {
-  display: flex;
-  flex-direction: column;
   min-height: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 .about__portrait img {
+  display: block;
   width: 100%;
-  flex: 1;
-  min-height: 0;
+  height: 100%;
   object-fit: contain;
   object-position: bottom;
   filter: grayscale(1);
